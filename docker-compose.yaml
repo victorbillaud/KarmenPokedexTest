@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  ##############
+  ## SERVER ##
+  server:
+    build:
+      context: ./pokedex-backend
+      dockerfile: Dockerfile
+    networks:
+      - webapp
+    ports:
+      - 3002:3002
+    volumes:
+      - ./pokedex-backend/node_modules:/app/node_modules
+      - ./pokedex-backend/src:/app/src
+    restart: always
+    container_name: server
+    command: npm start
+  #############
+  ## CLIENT ##
+  client:
+    build:
+      context: ./pokedex-front-typescript
+      dockerfile: Dockerfile
+    volumes:
+      - ./pokedex-front-typescript/node_modules:/app/node_modules
+      - ./pokedex-front-typescript/src:/app/src
+      - ./pokedex-front-typescript/public:/app/public
+    networks:
+      - webapp
+    ports:
+      - 3000:3000
+    command: npm start
+    stdin_open: true
+    restart: always
+    container_name: client
+networks:
+  webapp:
+    driver: bridge
