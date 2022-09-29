@@ -1,0 +1,26 @@
+.pokemonBlock-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+p {
+    text-align: start;
+}
+
+.pokemonBlock-container h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.pokemonBlock-container span {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-right: 10px;
+}
